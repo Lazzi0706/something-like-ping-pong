@@ -1,0 +1,53 @@
+/* 
+  Потом доделаю это говно! D:<
+*/
+/* */
+const canvas = document.querySelector('canvas');
+const ctx = canvas.getContext('2d');
+/* */
+const CANVAS_WIDTH = 500;
+const CANVAS_HEIGHT = 300;
+class Player {
+  constructor(width, height, ai, x, y) {
+    this.width = width;
+    this.height = height;
+    this.ai = ai;
+    this.x = x;
+    this.y = y;
+  }
+  draw(x, y, width, height) {
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(x, y, width, height);
+  }
+}
+class Ball {
+  constructor(width, height, x, y) {
+    this.width = width;
+    this.height = height;
+    this.x = x;
+    this.y = y;
+  }
+  draw() {
+    ctx.fillStyle = '#ffffff';
+    ctx.arc(250, 150, 10, 0, 2 * Math.PI, true);
+    ctx.fill();
+  }
+}
+/* */
+function render() {
+  canvas.width = CANVAS_WIDTH;
+  canvas.height = CANVAS_HEIGHT;
+  //
+  let ball = new Ball();
+  let player = new Player();
+  let playerAi = new Player();
+  playerAi.ai = true;
+  player.y = 10;
+  //
+  ball.draw();
+  player.draw(player.y, 0, 10, 100);
+  playerAi.draw(480, 0, 10, 100);
+  /* */
+  requestAnimationFrame(render);
+}
+render();
