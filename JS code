@@ -13,7 +13,6 @@ class Player {
   constructor(width, height, ai, x, y) {
     this.width = width = 10;
     this.height = height = 100;
-    this.ai = ai;
     this.x = x = 10;
     this.y = y = 0;
   }
@@ -39,18 +38,15 @@ class Ball {
 let ball = new Ball();
 let player = new Player();
 let playerAi = new Player();
-playerAi.y;
 /* Functions */
 function render() {
   // Canvas
   canvas.width = CANVAS_WIDTH;
   canvas.height = CANVAS_HEIGHT;
-  // initialization
-  playerAi.ai = true;
   // Draw objects
   ball.draw();
   player.draw(10, player.y, player.width, player.height);
-  playerAi.draw(480, playerAi.y, player.width, player.height);
+  playerAi.draw(480, playerAi.y, playerAi.width, playerAi.height);
   /* */
   requestAnimationFrame(control);
 }
