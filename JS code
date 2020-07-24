@@ -4,16 +4,18 @@
 /* */
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
+document.addEventListener('keydown', control);
 /* */
 const CANVAS_WIDTH = 500;
 const CANVAS_HEIGHT = 300;
+/* Classes */
 class Player {
   constructor(width, height, ai, x, y) {
-    this.width = width;
-    this.height = height;
+    this.width = width = 10;
+    this.height = height = 100;
     this.ai = ai;
-    this.x = x;
-    this.y = y;
+    this.x = x = 10;
+    this.y = y = 0;
   }
   draw(x, y, width, height) {
     ctx.fillStyle = '#fff';
@@ -33,21 +35,35 @@ class Ball {
     ctx.fill();
   }
 }
-/* */
+// Create objects
+let ball = new Ball();
+let player = new Player();
+let playerAi = new Player();
+playerAi.y;
+/* Functions */
 function render() {
+  // Canvas
   canvas.width = CANVAS_WIDTH;
   canvas.height = CANVAS_HEIGHT;
-  //
-  let ball = new Ball();
-  let player = new Player();
-  let playerAi = new Player();
+  // initialization
   playerAi.ai = true;
-  player.y = 10;
-  //
+  // Draw objects
   ball.draw();
-  player.draw(player.y, 0, 10, 100);
-  playerAi.draw(480, 0, 10, 100);
+  player.draw(10, player.y, player.width, player.height);
+  playerAi.draw(480, playerAi.y, player.width, player.height);
   /* */
-  requestAnimationFrame(render);
+  requestAnimationFrame(control);
+}
+// Begin of monkey code
+function control(event) {
+  if (event.keyCode == 83) {
+    player.y += 4;
+    ctx.clearRect(10, player.y - 10, player.width, player.height);
+    player.draw(10, player.y, player.width, player.height);
+  } else if (event.keyCode == 87) {
+    player.y -= 4;
+    ctx.clearRect(10, player.y + 10, player.width, player.height);
+    player.draw(10, player.y, player.width, player.height);
+  }
 }
 render();
