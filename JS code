@@ -8,7 +8,7 @@ document.addEventListener('keydown', control);
 /* */
 const CANVAS_WIDTH = 500;
 const CANVAS_HEIGHT = 300;
-/* Classes */
+/* Классы */
 class Player {
   constructor(width, height, ai, x, y) {
     this.width = width = 10;
@@ -34,7 +34,7 @@ class Ball {
     ctx.fill();
   }
 }
-// Create objects
+// Создаёт объекты
 let ball = new Ball();
 let player = new Player();
 let playerAi = new Player();
@@ -50,7 +50,7 @@ function render() {
   /* */
   requestAnimationFrame(control);
 }
-// Begin of monkey code
+// Начало говнокода
 function control(event) {
   if (event.keyCode == 83) {
     player.y += 4;
